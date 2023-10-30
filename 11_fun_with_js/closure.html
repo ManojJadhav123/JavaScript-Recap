@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+    <script>
+    
+    // lexical scope example 1
+
+    // function init(){
+    //     let name = "Mozilla";
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+
+    // init();
+
+
+    // lexical scope example 2
+
+    // function outer(){
+    //     let userName = "manoj";
+    //     console.log("outer", secret);
+    //     function inner(){
+    //         let secret = "123";
+    //         console.log("inner",userName);
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo",userName);
+    //         console.log(secret);
+    //     }
+    //     inner();
+    //     innerTwo();
+    // }
+    
+    // outer();
+    // console.log("too outer", userName);
+
+
+    // closure example 1
+
+    // function makeFunc(){
+    //     const name = "Mozilla";
+    //     function displayName(){
+    //         console.log(displayName);
+    //     }
+    //     return displayName;
+    // }
+    // const myFunc = makeFunc();
+    // myFunc();
+
+    </script>
+    <script>
+        
+    // closure example 2
+
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = "orange"
+    // }
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = "green"
+    // }
+
+    // with help of closure we can do it in a bettter way
+
+    function clickHandler(color){
+        // document.body.style.backgroundColor = `${color}`
+
+        return function(){
+             document.body.style.backgroundColor = `${color}`
+        }
+    }
+
+    document.getElementById("orange").onclick = clickHandler("orange");
+    document.getElementById("green").onclick = clickHandler("green");
+    </script>
+</html>
